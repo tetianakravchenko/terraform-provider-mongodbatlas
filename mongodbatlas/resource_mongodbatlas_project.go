@@ -147,7 +147,7 @@ func resourceMongoDBAtlasProjectRead(ctx context.Context, d *schema.ResourceData
 		return diag.FromErr(fmt.Errorf("error getting project's teams assigned (%s): %s", projectID, err))
 	}
 
-	apiKeys, err := getProjectApiKeys(conn, projectRes.OrgID, projectRes.ID)
+	apiKeys, err := getProjectApiKeys(conn, ctx, projectRes.OrgID, projectRes.ID)
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("error getting project's api keys (%s): %s", projectID, err))
 	}
